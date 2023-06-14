@@ -1,7 +1,8 @@
 #Command line for the win
-Background Context
+
+##Background Context
 CMD CHALLENGE is a pretty cool game challenging you on Bash skills. Everything is done via the command line and the questions are becoming increasingly complicated. It’s a good training to improve your command line skills!
 
-N.B: It was so easy and fun to solve the challenge tillthe 2nd task. I had to read more resources starting from the last challenge (18th) of the second task. It's always good to solve challenging tasks to improve your knowledge and skills. Have fun!
+***N.B:*** It was so easy and fun to solve the challenge tillthe 2nd task. I had to read more resources starting from the last challenge (18th) of the second task. It's always good to solve challenging tasks to improve your knowledge and skills. Have fun!
 
-https://cmdchallenge.com/
+[*Wanna try?!!*]https://cmdchallenge.com/
