@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Displays content of current directory in list format after the first dash
+for file in *; do
+	if  [ -f "$file" ] && [ "${file:0:1}" != "." ]; then
+		my_files=$(echo "$file" | cut -d'-' -f2-);
+		echo "$my_files";
+	fi
+done
