@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-if ARGV[0] =~ /School/
+if /School/.match?(ARGV[0])
   puts "School"
 else
   puts ""
