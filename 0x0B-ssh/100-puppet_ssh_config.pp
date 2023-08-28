@@ -1,16 +1,10 @@
-# This puppet creates a Client configuration file
-# The code creates/updates the file '~/.ssh/config' with specific path, permission,
-# owner, group & content
-file { '~/.ssh/config':
+# This puppet modifies a Client configuration file
+# The code modifies the file '/etc/ssh/ssh_config'
+file_line { 'Configure SSH authentication':
   ensure  => present,
-  mode    => '0600',
-  owner   => 'root',
-  group   => 'root',
-  content => "
-Host *
-    PasswordAuthentication no
-
-Host 54.157.137.159
-    IdentityFile ~/.ssh/school
-  ",
+  path    => '/etc/ssh/ssh_config',
+  line    => [
+    '	PasswordAuthentication no',
+    '	IdentityFile ~/.ssh/school',
+  ],
 }
