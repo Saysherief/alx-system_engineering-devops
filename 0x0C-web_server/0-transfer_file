@@ -13,7 +13,7 @@ user=$3
 path_to_ssh=$4
 
 # Disable strict host key checking
-export "SCP_OPTIONS=-o StrictHostKeyChecking=no"
+# export "SCP_OPTIONS=-o StrictHostKeyChecking=no"
 
 # Transfer the file using scp
-scp -i "$path_to_ssh" $path_to_file $user@$ip:~/
+scp -o StrictHostKeyChecking=no -i "$path_to_ssh" "$path_to_file" "$user@$ip:~/"
