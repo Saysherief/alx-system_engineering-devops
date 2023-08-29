@@ -8,6 +8,12 @@ sudo apt update
 # Install Nginx isiing -y to prompt yes
 sudo apt install -y nginx
 
+# Configire Nginx to listen on port 80
+sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+
+# Create a simple HTML page
+echo "<html><body><h1>Hello World!</h1></body></html>" | sudo tee /var/www/html/index.html > /dev/null
+
 # Configure Nginx to redirect
 redi_page="<html><body><h1>301 Moved Permanently</h1></body></html>"
 line1="\\tlocation \/redirect_me "
