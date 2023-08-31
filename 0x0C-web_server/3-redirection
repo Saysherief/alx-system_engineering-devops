@@ -17,7 +17,7 @@ echo "<html><body><h1>Hello World!</h1></body></html>" | sudo tee /var/www/html/
 # Configure Nginx to redirect
 redirect_config=$(cat <<EOF
 	location /redirect_me {
-		return 301 https://www.google.com/;
+		return 301 https://www.youtube.com/;
 	}
 EOF
 )
