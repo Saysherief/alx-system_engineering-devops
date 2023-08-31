@@ -9,19 +9,19 @@ sudo apt update
 sudo apt install -y nginx
 
 # Configire Nginx to listen on port 80
-sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+#sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
 
 # Create a simple HTML page
 echo "<html><body><h1>Hello World!</h1></body></html>" | sudo tee /var/www/html/index.html > /dev/null
 
 # Configure Nginx to redirect
-redirect_config=$(cat <<EOF
-	location /redirect_me {
-		return 301 https://www.youtube.com/;
-	}
-EOF
-)
-sudo sed -i "/^server {/a $redirect_config" /etc/nginx/sites-available/default
+#redirect_config=$(cat <<EOF
+#	location /redirect_me {
+#		return 301 https://www.youtube.com/;
+#	}
+#EOF
+#)
+sudo sed -i "/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/ permanent;" /etc/nginx/sites-available/default
 
 # Restart Nginx on server
 sudo service nginx restart
