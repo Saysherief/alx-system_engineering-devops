@@ -12,7 +12,7 @@ sudo apt install -y nginx
 # sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
 
 # Create a simple HTML page
-echo "<html><body><h1>Hello World!</h1></body></html>" | sudo tee /var/www/html/index.html
+echo "<html><body><h1>Hello World!</h1></body></html>" | sudo tee /var/www/html/index.html > /dev/null
 
 # Configure Nginx to redirect
 line1="a rewrite ^/redirect_me "
