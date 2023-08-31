@@ -18,7 +18,7 @@ echo "<html><body><h1>Hello World!</h1></body></html>" | sudo tee /var/www/html/
 line1="a rewrite ^/redirect_me "
 line2="https://www.google.com/ permanent;"
 location="/etc/nginx/sites-available/default"
-sudo sed -i "/listen 80 default_server/$line1{\n\t\t$line2\n\t}" $location
+sudo sed -i "s/listen 80 default_server;/listen 80;//$line1{\n\t\t$line2\n\t}" $location
 
 # Restart Nginx on server
 sudo service nginx restart
