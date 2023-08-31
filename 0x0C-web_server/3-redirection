@@ -9,16 +9,19 @@ sudo apt update
 sudo apt install -y nginx
 
 # Configire Nginx to listen on port 80
-# sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
 
 # Create a simple HTML page
 echo "<html><body><h1>Hello World!</h1></body></html>" | sudo tee /var/www/html/index.html > /dev/null
 
 # Configure Nginx to redirect
-line1="a rewrite ^/redirect_me "
-line2="https://www.google.com/ permanent;"
-location="/etc/nginx/sites-available/default"
-sudo sed -i "s/listen 80 default_server;/listen 80;//$line1{\n\t\t$line2\n\t}" $location
+redirect_config=$(cat <<EOF
+	location /redirect_me {
+		return 301 https://www.google.com/;
+	}
+EOF
+)
+sudo sed -i "/^server {/a $redirect_config" /etc/nginx/sites-available/default
 
 # Restart Nginx on server
 sudo service nginx restart
