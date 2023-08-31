@@ -15,12 +15,10 @@ sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-availabl
 echo "<html><body><h1>Hello World!</h1></body></html>" | sudo tee /var/www/html/index.html > /dev/null
 
 # Configure Nginx to redirect
-line1="\\tlocation \/redirect_me "
-line2=" return 301 "
+line1="\\tlocation /redirect_me "
+line2="https://www.google.com/ permanent;"
 location="/etc/nginx/sites-available/default"
-# Configure Nginx to resolve Not found page 404
-echo "301 Moved Permanently" | sudo tee /var/www/html/301.html >> /dev/null
-sudo sed -i "/^server {/a $line1{\n\t\t$line2/301.html;\n\t}" $location
+sudo sed -i "/^server {/a $line1{\n\t\t$line2\n\t}" $location
 
 # Restart Nginx on server
 sudo service nginx restart
