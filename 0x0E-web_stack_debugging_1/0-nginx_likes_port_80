@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# fix my Nginx to listen on on port 80
+
+# Enable default site configuration using symbolic link
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart
