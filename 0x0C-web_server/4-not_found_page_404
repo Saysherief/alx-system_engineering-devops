@@ -19,6 +19,7 @@ sudo sed -i "/listen \[::\]:80 default_server;/a rewrite ^/redirect_me https://w
 
 # Configure Nginx to resolve Not found page 404
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
+sudo sed -i "s/#error_page 404/error_page 404/" /etc/nginx/sites-available/default
 sudo sed -i "/error_page 404/a \\tlocation = /404.html {\n\t\troot /var/www/html;\n\t}" /etc/nginx/sites-available/default
 
 # Restart Nginx on server
