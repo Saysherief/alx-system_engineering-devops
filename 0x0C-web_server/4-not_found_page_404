@@ -15,11 +15,11 @@ sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-availabl
 echo "<html><body><h1>Hello World!</h1></body></html>" | sudo tee /var/www/html/index.html > /dev/null
 
 # Configure Nginx to redirect
-sudo sed -i "/listen \[::\]:80 default_server;/a \trewrite ^/redirect_me https://www.google.com/ permanent;" /etc/nginx/sites-available/default
+sudo sed -i "/listen \[::\]:80 default_server;/a rewrite ^/redirect_me https://www.google.com/ permanent;" /etc/nginx/sites-available/default
 
 # Configure Nginx to resolve Not found page 404
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
-sudo sed -i "$a error_page 404 /404.html;" /etc/nginx/sites-available/default
+sudo sed -i '$a error_page 404 /404.html;' /etc/nginx/sites-available/default
 
 # Restart Nginx on server
 sudo service nginx restart
