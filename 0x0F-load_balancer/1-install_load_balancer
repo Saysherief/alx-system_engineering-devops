@@ -2,7 +2,7 @@
 # A script that Install and configure HAproxy on your lb-01 server
 
 # Enable a dedicated PPA
-sudo pt-get install --no-install-recommends software-properties-common -y
+sudo apt-get install --no-install-recommends software-properties-common -y
 sudo add-apt-repository ppa:vbernat/haproxy-2.8sudo apt update -y
 
 # Install HAProxy
@@ -12,7 +12,7 @@ sudo apt-get install -y haproxy=2.8.\*
 sudo mv /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
 sudo touch /etc/haproxy/haproxy.cfg
 
-# Configure HAproxy for web-01 and web--02
+# Configure HAproxy for web-01 and web-02
 
 echo "frontend lb_frontend
 	bind *:80
