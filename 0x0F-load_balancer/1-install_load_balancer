@@ -20,6 +20,7 @@ echo "frontend lb_frontend
         default_backend lb_backend
 
 backend lb_backend
+	mode http
         balance roundrobin
         server 230448-web-01 54.157.137.159:80
         server 230448-web-02 54.210.88.23:80" | sudo tee -a /etc/haproxy/haproxy.cfg > /dev/null
