@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Bash script that runs nginx as nginx user and must be listening on all active IPs on port 8080
+sudo apt-get update
+sudo apt-get install -y nginx
 sudo service nginx stop
 sudo sed -i 's/user\s*nginx;/user nginx nginx;/' /etc/nginx/nginx.conf
 sudo sed -i 's/listen\s*80;/listen 8080;/' /etc/nginx/sites-available/default
